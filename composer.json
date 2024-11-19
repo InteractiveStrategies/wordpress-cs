@@ -1,0 +1,37 @@
+{
+  "name": "interactivestrategies/wordpress-cs",
+  "type": "phpcodesniffer-standard",
+  "description": "Custom Interactive Strategies code sniffer ruleset for WordPress projects.",
+  "keywords": [
+    "phpcs"
+  ],
+  "homepage": "https://bitbucket.org/interactivestrategies/wordpress-cs",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Ben Voynick",
+      "email": "ben@interactivestrategies.com"
+    },
+    {
+      "name": "Conor Driscoll",
+      "email": "conor@interactivestrategies.com"
+    }
+  ],
+  "require": {
+    "wp-coding-standards/wpcs": "2.3.0",
+    "slevomat/coding-standard": "^8.11",
+    "squizlabs/php_codesniffer": "^3.9.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "ISWordPress\\": "ISWordPress/"
+    }
+  },
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  }
+}
