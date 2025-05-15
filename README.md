@@ -18,6 +18,8 @@ Add a phpcs.xml.dist file in your project with content like this(make sure to re
     <rule ref="ISWordPress"/>
 
     <file>web/app/themes/emperor</file>
+    <exclude-pattern>*.twig</exclude-pattern>
+    <exclude-pattern type="relative">^*/.*\.twig$</exclude-pattern>
 
 </ruleset>
 ```
