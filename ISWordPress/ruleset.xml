@@ -23,6 +23,10 @@
     <exclude name="WordPress.WP.I18n"/>
   </rule>
 
+  <rule ref="WordPress.WP.CapitalPDangit">
+    <exclude name="WordPress.WP.CapitalPDangit"/>
+  </rule>
+
   <rule ref="WordPress.WP.DeprecatedParameterValues">
     <exclude name="WordPress.WP.DeprecatedParameterValues"/>
   </rule>
