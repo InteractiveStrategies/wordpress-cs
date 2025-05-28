@@ -2,35 +2,156 @@
 <ruleset name="ISWordPress">
   <description>Customized Code Sniffer rules for Interactive Strategies WordPress projects.</description>
 
-  <arg name="extensions" value="php,json,twig,yml"/>
+  <!-- FILE SETTINGS -->
+  <arg name="extensions" value="php"/>
 
+  <!-- EXCLUSION PATTERNS -->
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/assets/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
   <exclude-pattern>*/jquery.min.js</exclude-pattern>
 
+  <!-- WORDPRESS RULES -->
+  <!-- Include all WordPress rules and exclude specific ones -->
   <rule ref="WordPress">
     <exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterCloseBracket"/>
     <exclude name="Squiz.WhiteSpace.SemicolonSpacing.Incorrect"/>
     <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore"/>
   </rule>
 
-  <rule ref="WordPress.Arrays.ArrayDeclarationSpacing"/>
+  <rule ref="WordPress.WP.I18n">
+    <exclude name="WordPress.WP.I18n"/>
+  </rule>
 
+  <rule ref="WordPress.WP.DeprecatedParameterValues">
+    <exclude name="WordPress.WP.DeprecatedParameterValues"/>
+  </rule>
+
+  <!-- SECURITY RULES -->
+  <rule ref="WordPress.Security.NonceVerification">
+    <exclude name="WordPress.Security.NonceVerification.Recommended"/>
+  </rule>
+
+  <rule ref="WordPress.Security.ValidatedSanitizedInput">
+    <exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated"/>
+    <exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash"/>
+    <exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized"/>
+  </rule>
+
+  <rule ref="WordPress.Security.EscapeOutput">
+    <exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped"/>
+    <exclude name="WordPress.Security.EscapeOutput.UnsafePrintingFunction"/>
+  </rule>
+
+  <!-- DATABASE RULES -->
+  <rule ref="WordPress.DB.SlowDBQuery">
+    <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_tax_query"/>
+    <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_query"/>
+  </rule>
+
+  <!-- WORDPRESS NAMING CONVENTIONS -->
+  <rule ref="WordPress.NamingConventions.ValidVariableName">
+    <exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase"/>
+    <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase"/>
+    <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
+  </rule>
+
+  <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+    <exclude name="WordPress.NamingConventions.PrefixAllGlobals"/>
+  </rule>
+
+  <rule ref="WordPress.NamingConventions.ValidHookName">
+    <exclude name="WordPress.NamingConventions.ValidHookName"/>
+  </rule>
+
+  <!-- WORDPRESS FILE FORMATTING -->
+  <rule ref="WordPress.Files.FileName">
+    <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+    <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+  </rule>
+
+  <!-- WORDPRESS ARRAY FORMATTING -->
+  <rule ref="WordPress.Arrays.ArrayDeclarationSpacing">
+    <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound"/>
+    <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.ArrayItemNoNewLine"/>
+  </rule>
+
+  <rule ref="WordPress.Arrays.ArrayIndentation">
+    <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
+    <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
+  </rule>
+
+  <rule ref="WordPress.Arrays.MultipleStatementAlignment">
+    <exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned"/>
+  </rule>
+
+  <!-- WORDPRESS WHITESPACE RULES -->
   <rule ref="WordPress.WhiteSpace.ControlStructureSpacing"/>
 
-  <rule ref="WordPress.NamingConventions.ValidVariableName"/>
+  <rule ref="WordPress.WhiteSpace.PrecisionAlignment">
+    <exclude name="WordPress.WhiteSpace.PrecisionAlignment.Found"/>
+  </rule>
 
-  <rule ref="WordPress.Files.FileName"/>
+  <!-- WORDPRESS FUNCTIONALITY -->
+  <rule ref="WordPress.WP.AlternativeFunctions">
+    <exclude name="WordPress.WP.AlternativeFunctions"/>
+  </rule>
 
-  <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+  <rule ref="WordPress.WP.GlobalVariablesOverride">
+    <exclude name="WordPress.WP.GlobalVariablesOverride"/>
+  </rule>
 
-  <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
+  <!-- WORDPRESS CODE ANALYSIS -->
+  <rule ref="WordPress.CodeAnalysis.AssignmentInCondition">
+    <exclude name="WordPress.CodeAnalysis.AssignmentInCondition"/>
+  </rule>
 
-  <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
+  <rule ref="WordPress.PHP.DisallowShortTernary">
+    <exclude name="WordPress.PHP.DisallowShortTernary.Found"/>
+  </rule>
 
+  <!-- GENERIC RULES -->
+  <!-- Whitespace and Formatting -->
+
+  <rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
+    <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
+  </rule>
+
+  <rule ref="Generic.WhiteSpace.DisallowSpaceIndent">
+    <exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed"/>
+  </rule>
+
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect"/>
+    <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact"/>
+  </rule>
+
+  <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
+
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent.TabsUsed">
+    <type>warning</type>
+  </rule>
+
+  <!-- Syntax Rules -->
   <rule ref="Generic.Formatting.SpaceAfterCast.NoSpace">
     <type>warning</type>
+  </rule>
+
+  <rule ref="Generic.Formatting.MultipleStatementAlignment">
+    <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
+  </rule>
+
+  <!-- Code Quality -->
+  <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+  <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
+  <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
+
+  <rule ref="Generic.Files.OneObjectStructurePerFile">
+    <exclude name="Generic.Files.OneObjectStructurePerFile"/>
+  </rule>
+
+  <rule ref="Generic.Functions.CallTimePassByReference">
+    <exclude name="Generic.Functions.CallTimePassByReference"/>
   </rule>
 
   <rule ref="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma">
@@ -45,6 +166,7 @@
     <type>warning</type>
   </rule>
 
+  <!-- Complexity Rules -->
   <rule ref="Generic.Metrics.NestingLevel">
     <properties>
       <property name="absoluteNestingLevel" value="99" />
@@ -52,8 +174,8 @@
     </properties>
   </rule>
 
+  <!-- PHP Specific Rules -->
   <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag"/>
-
   <rule ref="Generic.PHP.DiscourageGoto">
     <type>error</type>
   </rule>
@@ -73,18 +195,16 @@
 
   <rule ref="Generic.PHP.NoSilencedErrors"/>
 
-  <rule ref="Generic.PHP.UpperCaseConstant">
-    <type>warning</type>
+  <rule ref="Generic.PHP.LowerCaseConstant">
+    <exclude name="Generic.PHP.LowerCaseConstant"/>
   </rule>
 
-  <rule ref="Generic.WhiteSpace.DisallowTabIndent.TabsUsed">
-     <type>warning</type>
-  </rule>
-
+  <!-- PEAR RULES -->
   <rule ref="PEAR.Functions.FunctionCallSignature">
     <properties>
       <property name="indent" value="2" />
     </properties>
+    <exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments"/>
   </rule>
 
   <rule ref="PEAR.Functions.FunctionCallSignature.Indent">
@@ -102,8 +222,13 @@
     <type>warning</type>
   </rule>
 
+  <!-- PSR RULES -->
   <rule ref="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter">
     <type>warning</type>
+  </rule>
+
+  <rule ref="PSR2.ControlStructures.SwitchDeclaration.BreakIndent">
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BreakIndent"/>
   </rule>
 
   <rule ref="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse">
@@ -114,10 +239,13 @@
     <type>warning</type>
   </rule>
 
+  <!-- SLEVOMAT CODING STANDARD RULES -->
+  <!-- Arrays -->
   <rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation">
     <type>warning</type>
   </rule>
 
+  <!-- Classes -->
   <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility">
     <properties>
       <property name="fixable" value="true" />
@@ -129,145 +257,150 @@
     <type>warning</type>
   </rule>
 
+  <!-- Control Structures -->
   <rule ref="SlevomatCodingStandard.ControlStructures.DisallowContinueWithoutIntegerOperandInSwitch"/>
-
   <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator">
     <type>warning</type>
   </rule>
-
-  <rule ref="SlevomatCodingStandard.ControlStructures.RequireShortTernaryOperator">
-    <type>warning</type>
-  </rule>
-
   <rule ref="SlevomatCodingStandard.ControlStructures.UselessIfConditionWithReturn">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.ControlStructures.UselessTernaryOperator">
     <type>warning</type>
   </rule>
 
+  <!-- Exceptions -->
   <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.Exceptions.RequireNonCapturingCatch">
     <type>warning</type>
   </rule>
 
+  <!-- Functions -->
   <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration">
     <type>warning</type>
   </rule>
 
+  <!-- Namespaces -->
   <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias">
     <type>warning</type>
   </rule>
 
+  <!-- PHP -->
   <rule ref="SlevomatCodingStandard.PHP.OptimizedFunctionsWithoutUnpacking">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.PHP.ShortList">
     <type>warning</type>
   </rule>
 
+  <!-- Type Hints -->
   <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing">
     <type>warning</type>
   </rule>
-
   <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing">
     <type>warning</type>
   </rule>
 
+  <!-- SQUIZ RULES -->
+  <!-- Arrays -->
   <rule ref="Squiz.Arrays.ArrayDeclaration.CloseBraceNewLine">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.Arrays.ArrayDeclaration.CommaAfterLast">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.Arrays.ArrayDeclaration.IndexNoNewline">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.Arrays.ArrayDeclaration.NoSpaceAfterComma">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.Arrays.ArrayDeclaration.SpaceInEmptyArray">
     <type>warning</type>
   </rule>
 
-  <rule ref="Squiz.ControlStructures.ForLoopDeclaration">
-    <type>warning</type>
+  <!-- Commenting -->
+  <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
+    <exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing"/>
+  </rule>
+  <rule ref="Squiz.Commenting.FunctionComment.MissingParamComment">
+    <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+  </rule>
+  <rule ref="Squiz.Commenting.InlineComment">
+    <exclude name="Squiz.Commenting.InlineComment"/>
+    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+  </rule>
+  <rule ref="Squiz.PHP.CommentedOutCode">
+    <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
   </rule>
 
+  <!-- Control Structures -->
+  <rule ref="Squiz.ControlStructures.ForLoopDeclaration">
+    <exclude name="Squiz.ControlStructures.ForLoopDeclaration.SpacingAfterOpen"/>
+    <exclude name="Squiz.ControlStructures.ForLoopDeclaration.SpacingBeforeClose"/>
+  </rule>
   <rule ref="Squiz.ControlStructures.SwitchDeclaration.MissingCase">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.ControlStructures.SwitchDeclaration.SpacingAfterBreak">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.ControlStructures.SwitchDeclaration.SpaceBeforeColonCase">
     <type>warning</type>
   </rule>
 
+  <!-- Functions -->
   <rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
     <type>warning</type>
   </rule>
 
-  <rule ref="Squiz.Operators.ValidLogicalOperators">
-    <type>warning</type>
-  </rule>
-
+  <!-- PHP -->
   <rule ref="Squiz.PHP.DisallowSizeFunctionsInLoops">
     <type>warning</type>
   </rule>
-
+  <rule ref="Squiz.PHP.DisallowMultipleAssignments">
+    <exclude name="Squiz.PHP.DisallowMultipleAssignments"/>
+  </rule>
   <rule ref="Squiz.PHP.DiscouragedFunctions"/>
-
   <rule ref="Squiz.PHP.InnerFunctions">
     <type>warning</type>
   </rule>
 
+  <!-- Misc Squiz Rules -->
+  <rule ref="Squiz.Operators.ValidLogicalOperators">
+    <type>warning</type>
+  </rule>
   <rule ref="Squiz.Scope.StaticThisUsage"/>
-
   <rule ref="Squiz.Strings.ConcatenationSpacing">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.WhiteSpace.FunctionSpacing">
-    <type>warning</type>
+    <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before"/>
   </rule>
-
   <rule ref="Squiz.WhiteSpace.OperatorSpacing">
     <type>warning</type>
   </rule>
-
   <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
     <type>warning</type>
+  </rule>
+  <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing">
+    <exclude name="Squiz.WhiteSpace.LanguageConstructSpacing"/>
   </rule>
 </ruleset>
