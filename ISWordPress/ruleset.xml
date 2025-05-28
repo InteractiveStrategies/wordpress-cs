@@ -128,15 +128,7 @@
 
   <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
 
-  <rule ref="Generic.WhiteSpace.DisallowTabIndent.TabsUsed">
-    <type>warning</type>
-  </rule>
-
   <!-- Syntax Rules -->
-  <rule ref="Generic.Formatting.SpaceAfterCast.NoSpace">
-    <type>warning</type>
-  </rule>
-
   <rule ref="Generic.Formatting.MultipleStatementAlignment">
     <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
   </rule>
@@ -152,18 +144,6 @@
 
   <rule ref="Generic.Functions.CallTimePassByReference">
     <exclude name="Generic.Functions.CallTimePassByReference"/>
-  </rule>
-
-  <rule ref="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma">
-    <type>warning</type>
-  </rule>
-
-  <rule ref="Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma">
-    <type>warning</type>
-  </rule>
-
-  <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie">
-    <type>warning</type>
   </rule>
 
   <!-- Complexity Rules -->
@@ -223,28 +203,11 @@
   </rule>
 
   <!-- PSR RULES -->
-  <rule ref="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter">
-    <type>warning</type>
-  </rule>
-
   <rule ref="PSR2.ControlStructures.SwitchDeclaration.BreakIndent">
     <exclude name="PSR2.ControlStructures.SwitchDeclaration.BreakIndent"/>
   </rule>
 
-  <rule ref="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse">
-    <type>warning</type>
-  </rule>
-
-  <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement">
-    <type>warning</type>
-  </rule>
-
   <!-- SLEVOMAT CODING STANDARD RULES -->
-  <!-- Arrays -->
-  <rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation">
-    <type>warning</type>
-  </rule>
-
   <!-- Classes -->
   <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility">
     <properties>
@@ -253,67 +216,8 @@
     <type>warning</type>
   </rule>
 
-  <rule ref="SlevomatCodingStandard.Classes.UselessLateStaticBinding">
-    <type>warning</type>
-  </rule>
-
   <!-- Control Structures -->
   <rule ref="SlevomatCodingStandard.ControlStructures.DisallowContinueWithoutIntegerOperandInSwitch"/>
-  <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.ControlStructures.UselessIfConditionWithReturn">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.ControlStructures.UselessTernaryOperator">
-    <type>warning</type>
-  </rule>
-
-  <!-- Exceptions -->
-  <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.Exceptions.RequireNonCapturingCatch">
-    <type>warning</type>
-  </rule>
-
-  <!-- Functions -->
-  <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration">
-    <type>warning</type>
-  </rule>
-
-  <!-- Namespaces -->
-  <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias">
-    <type>warning</type>
-  </rule>
-
-  <!-- PHP -->
-  <rule ref="SlevomatCodingStandard.PHP.OptimizedFunctionsWithoutUnpacking">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.PHP.ShortList">
-    <type>warning</type>
-  </rule>
-
-  <!-- Type Hints -->
-  <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing">
-    <type>warning</type>
-  </rule>
-  <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing">
-    <type>warning</type>
-  </rule>
 
   <!-- SQUIZ RULES -->
   <!-- Arrays -->
