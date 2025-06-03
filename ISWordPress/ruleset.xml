@@ -9,7 +9,15 @@
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/assets/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
-  <exclude-pattern>*/jquery.min.js</exclude-pattern>
+  <exclude-pattern>*/assets/vendor/*</exclude-pattern>
+  <exclude-pattern>*.min.js</exclude-pattern>
+  <exclude-pattern>*.min.css</exclude-pattern>
+  <exclude-pattern>*.js</exclude-pattern>
+  <exclude-pattern>*.css</exclude-pattern>
+  <exclude-pattern>*.twig</exclude-pattern>
+  <exclude-pattern>*.json</exclude-pattern>
+  <exclude-pattern type="relative">^*/.*\.twig$</exclude-pattern>
+  <exclude-pattern type="relative">^*/.*\.json$</exclude-pattern>
 
   <!-- WORDPRESS RULES -->
   <!-- Include all WordPress rules and exclude specific ones -->
@@ -133,6 +141,10 @@
 
   <rule ref="Generic.Files.OneObjectStructurePerFile">
     <exclude name="Generic.Files.OneObjectStructurePerFile"/>
+  </rule>
+
+  <rule ref="Generic.Functions.CallTimePassByReference">
+    <exclude name="Generic.Functions.CallTimePassByReference"/>
   </rule>
 
   <rule ref="Generic.Functions.CallTimePassByReference">
