@@ -9,15 +9,7 @@
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/assets/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
-  <exclude-pattern>*/assets/vendor/*</exclude-pattern>
-  <exclude-pattern>*.min.js</exclude-pattern>
-  <exclude-pattern>*.min.css</exclude-pattern>
-  <exclude-pattern>*.js</exclude-pattern>
-  <exclude-pattern>*.css</exclude-pattern>
-  <exclude-pattern>*.twig</exclude-pattern>
-  <exclude-pattern>*.json</exclude-pattern>
-  <exclude-pattern type="relative">^*/.*\.twig$</exclude-pattern>
-  <exclude-pattern type="relative">^*/.*\.json$</exclude-pattern>
+  <exclude-pattern>*/jquery.min.js</exclude-pattern>
 
   <!-- WORDPRESS RULES -->
   <!-- Include all WordPress rules and exclude specific ones -->
@@ -42,6 +34,27 @@
   <!-- SECURITY RULES -->
   <rule ref="WordPress.Security.NonceVerification">
     <exclude name="WordPress.Security.NonceVerification.Recommended"/>
+  </rule>
+
+  <!-- Ensure key security rules fire as errors, not warnings -->
+  <rule ref="WordPress.Security.EscapeOutput">
+    <type>error</type>
+  </rule>
+
+  <rule ref="WordPress.Security.ValidatedSanitizedInput">
+    <type>error</type>
+  </rule>
+
+  <rule ref="WordPress.Security.SafeRedirect">
+    <type>error</type>
+  </rule>
+
+  <rule ref="WordPress.DB.PreparedSQL">
+    <type>error</type>
+  </rule>
+
+  <rule ref="WordPress.DB.DirectDatabaseQuery">
+    <type>error</type>
   </rule>
 
   <!-- DATABASE RULES -->
@@ -147,10 +160,6 @@
     <exclude name="Generic.Functions.CallTimePassByReference"/>
   </rule>
 
-  <rule ref="Generic.Functions.CallTimePassByReference">
-    <exclude name="Generic.Functions.CallTimePassByReference"/>
-  </rule>
-
   <!-- Complexity Rules -->
   <rule ref="Generic.Metrics.NestingLevel">
     <properties>
@@ -165,11 +174,14 @@
     <type>error</type>
   </rule>
 
+  <!-- SECURITY: Forbidden functions - all at error level -->
   <rule ref="Generic.PHP.ForbiddenFunctions">
+    <type>error</type>
     <properties>
       <property name="forbiddenFunctions" type="array">
         <element key="eval" value="null"/>
-        <element key="extract" value="list"/>
+        <element key="extract" value="null"/>
+        <element key="maybe_unserialize" value="null"/>
         <element key="ob_end_flush" value="ob_get_clean"/>
         <element key="ob_flush" value="null"/>
         <element key="ob_get_flush" value="ob_get_clean"/>
