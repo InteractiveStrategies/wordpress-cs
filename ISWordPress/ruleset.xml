@@ -324,4 +324,9 @@
   <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing">
     <exclude name="Squiz.WhiteSpace.LanguageConstructSpacing"/>
   </rule>
+
+  <!-- SECURITY: Cookie flags -->
+  <rule ref="ISWordPress.Security.SecureCookieFlags">
+    <type>error</type>
+  </rule>
 </ruleset>
