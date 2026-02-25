@@ -3,7 +3,7 @@
   <description>Customized Code Sniffer rules for Interactive Strategies WordPress projects.</description>
 
   <!-- FILE SETTINGS -->
-  <arg name="extensions" value="php"/>
+  <arg name="extensions" value="php,twig"/>
 
   <!-- EXCLUSION PATTERNS -->
   <exclude-pattern>*/vendor/*</exclude-pattern>
@@ -329,4 +329,15 @@
   <rule ref="ISWordPress.Security.SecureCookieFlags">
     <type>error</type>
   </rule>
+
+  <!-- SECURITY: Twig |raw filter -->
+  <rule ref="ISWordPress.Security.TwigRawFilter">
+    <type>warning</type>
+  </rule>
+
+  <!-- Twig files don't contain PHP opening tags - suppress irrelevant warning -->
+  <rule ref="Internal.NoCodeFound">
+      <exclude-pattern>*.twig</exclude-pattern>
+  </rule>
+
 </ruleset>
