@@ -102,8 +102,8 @@
   <!-- WORDPRESS WHITESPACE RULES -->
   <rule ref="WordPress.WhiteSpace.ControlStructureSpacing"/>
 
-  <rule ref="WordPress.WhiteSpace.PrecisionAlignment">
-    <exclude name="WordPress.WhiteSpace.PrecisionAlignment.Found"/>
+  <rule ref="Universal.WhiteSpace.PrecisionAlignment">
+    <exclude name="Universal.WhiteSpace.PrecisionAlignment.Found"/>
   </rule>
 
   <!-- WORDPRESS FUNCTIONALITY -->
@@ -116,12 +116,12 @@
   </rule>
 
   <!-- WORDPRESS CODE ANALYSIS -->
-  <rule ref="WordPress.CodeAnalysis.AssignmentInCondition">
-    <exclude name="WordPress.CodeAnalysis.AssignmentInCondition"/>
+  <rule ref="Generic.CodeAnalysis.AssignmentInCondition">
+    <exclude name="Generic.CodeAnalysis.AssignmentInCondition"/>
   </rule>
 
-  <rule ref="WordPress.PHP.DisallowShortTernary">
-    <exclude name="WordPress.PHP.DisallowShortTernary.Found"/>
+  <rule ref="Universal.Operators.DisallowShortTernary">
+    <exclude name="Universal.Operators.DisallowShortTernary.Found"/>
   </rule>
 
   <!-- GENERIC RULES -->
